@@ -4,6 +4,7 @@ import com.wallet.dto.UserDTO;
 import com.wallet.entity.User;
 import com.wallet.response.Response;
 import com.wallet.service.UserService;
+import com.wallet.util.Bcrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.BindResult;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,6 @@ public class UserController {
 
         response.setData(this.convertEntityToDto(user));
 
-
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -46,7 +46,7 @@ public class UserController {
         u.setId(dto.getId());
         u.setEmail(dto.getEmail());
         u.setName(dto.getName());
-        u.setPassword(dto.getPassword());
+        u.setPassword(Bcrypt.getHash(dto.getPassword()));
 
         return u;
     }
@@ -56,7 +56,6 @@ public class UserController {
         dto.setId(user.getId());
         dto.setEmail(user.getEmail());
         dto.setName(user.getName());
-        dto.setPassword(user.getPassword());
 
         return dto;
     }
