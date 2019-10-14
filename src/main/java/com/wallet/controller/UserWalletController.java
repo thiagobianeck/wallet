@@ -34,7 +34,6 @@ public class UserWalletController {
         }
 
         UserWallet uw = service.save(this.convertDtoToEntity(dto));
-        System.out.println(uw);
 
         response.setData(this.convertEntityToDto(uw));
 
