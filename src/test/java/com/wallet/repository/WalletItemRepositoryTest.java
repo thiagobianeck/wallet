@@ -1,8 +1,18 @@
 package com.wallet.repository;
 
-import com.wallet.entity.Wallet;
-import com.wallet.entity.WalletItem;
-import com.wallet.util.enums.TypeEnum;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.ConstraintViolationException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,19 +23,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import javax.validation.ConstraintViolationException;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
-import static org.junit.Assert.*;
+import com.wallet.entity.Wallet;
+import com.wallet.entity.WalletItem;
+import com.wallet.util.enums.TypeEnum;
 
 @RunWith(SpringRunner.class)
-@ActiveProfiles("test")
 @SpringBootTest
+@ActiveProfiles("test")
 public class WalletItemRepositoryTest {
 
     private static final Date DATE = new Date();

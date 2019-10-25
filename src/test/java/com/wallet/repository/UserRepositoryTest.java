@@ -1,6 +1,11 @@
 package com.wallet.repository;
 
-import com.wallet.entity.User;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Optional;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,9 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
-import static org.junit.Assert.*;
+import com.wallet.entity.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,8 +54,7 @@ public class UserRepositoryTest {
         assertNotNull(response);
     }
 
-    @Test
-    public void testFIndByEmail() {
+	public void testFindByEmail() {
         Optional<User> response = repository.findByEmailEquals(EMAIL);
 
         assertTrue(response.isPresent());
